@@ -1,0 +1,88 @@
+<!doctype html><html><head><meta charset=UTF-8><link href=https://praxivesoftware.github.io/Samurai/main.css rel=stylesheet><meta content="width=device-width,initial-scale=1.0,maximum-scale=1" name=viewport><title> Understanding the file structure | Samurai </title><body><script>fetch(`https://api.github.com/repos/PraxiveSoftware/samurai/releases/latest`).then(a=>a.json()).then(a=>{let b=a.name;let c=a.html_url;release.innerHTML=`<a href='${c}'>${b}</a>`})</script><main><nav><a href=https://praxivesoftware.github.io/Samurai> <img alt src=https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Dragon/3D/dragon_3d.png> </a><div id=release></div><a class=ms-Icon--GlobalNavButton href=javascript:void(0); id=mobile onclick=burger()></a><div id=trees><input checked class=tree-toggle id=getting-started type=checkbox><label class=tree-toggle-label for=getting-started>Getting Started</label><ul class=subtree><li><a href=https://praxivesoftware.github.io/Samurai/getting-started/overview/>Setting up your project</a><li class=active><a href=https://praxivesoftware.github.io/Samurai/getting-started/filestructure/>Understanding the file structure</a></li><ul id=toc><li><a href=https://praxivesoftware.github.io/Samurai/getting-started/filestructure/#understanding-the-file-structure>Understanding the file structure</a> <ul><li><a href=https://praxivesoftware.github.io/Samurai/getting-started/filestructure/#samurai-json>samurai.json</a><li><a href=https://praxivesoftware.github.io/Samurai/getting-started/filestructure/#configs>Configs</a><li><a href=https://praxivesoftware.github.io/Samurai/getting-started/filestructure/#src>src/</a><li><a href=https://praxivesoftware.github.io/Samurai/getting-started/filestructure/#engine>.engine/</a></ul></ul><li><a href=https://praxivesoftware.github.io/Samurai/getting-started/userchrome/>Customizing Your Browser's UI</a></ul><input class=tree-toggle id=guides type=checkbox><label class=tree-toggle-label for=guides>Guides</label><ul class=subtree><li><a href=https://praxivesoftware.github.io/Samurai/guides/windows/>Preparing Windows</a><li><a href=https://praxivesoftware.github.io/Samurai/guides/removingpocket/>Removing pocket</a><li><a href=https://praxivesoftware.github.io/Samurai/guides/includingaddons/>Including addons</a><li><a href=https://praxivesoftware.github.io/Samurai/guides/branding/>Branding your browser</a><li><a href=https://praxivesoftware.github.io/Samurai/guides/autoupdates/>Automatic updates</a></ul><input class=tree-toggle id=reference type=checkbox><label class=tree-toggle-label for=reference>Reference</label><ul class=subtree><li><a href=https://praxivesoftware.github.io/Samurai/reference/config/>`samurai.json` Reference</a></ul></div></nav><article><div id=on_right><span class=ms-Icon--Search id=search-ico></span></div><div class=search-container><input placeholder="Search as you type..." id=search type=search><div class=search-results><div class=search-results__header></div><ul class=search-results__items></ul></div></div><div id=wrap><h1 id=understanding-the-file-structure>Understanding the file structure</h1><p>Lets take a look at the file structure of your project. It should look something like this:<pre class=language-filesystem data-lang=filesystem style=color:#c0c5ce;background-color:#2b303b><code class=language-filesystem data-lang=filesystem><span>├─  .gitignore
+</span><span>├─  samurai.json
+</span><span>├─  configs
+</span><span>│   ├─  common
+</span><span>│   │   └─  mozconfig
+</span><span>│   ├─  linux
+</span><span>│   │   └─  mozconfig
+</span><span>│   ├─  macos
+</span><span>│   │   └─  mozconfig
+</span><span>│   └─  windows
+</span><span>│       └─  mozconfig
+</span><span>├─  src
+</span><span>│   ├─  README.md
+</span><span>│   └─  browser
+</span><span>│       └─  themes
+</span><span>│           ├─  custom
+</span><span>│           │   ├─  linux
+</span><span>│           │   │   └─  linux.inc.css
+</span><span>│           │   ├─  macos
+</span><span>│           │   │   └─  macos.inc.css
+</span><span>│           │   ├─  shared
+</span><span>│           │   │   └─  shared.inc.css
+</span><span>│           │   └─  windows
+</span><span>│           │       └─  windows.inc.css
+</span><span>│           ├─  linux
+</span><span>│           │   ├─  browser-css.patch
+</span><span>│           │   └─  jar-mn.patch
+</span><span>│           ├─  osx
+</span><span>│           │   ├─  browser-css.patch
+</span><span>│           │   └─  jar-mn.patch
+</span><span>│           ├─  shared
+</span><span>│           │   ├─  browser-shared-css.patch
+</span><span>│           │   └─  jar-inc-mn.patch
+</span><span>│           └─  windows
+</span><span>│               ├─  browser-css.patch
+</span><span>│               └─  jar-mn.patch
+</span><span>├─  .samurai
+</span><span>│   └─  ...
+</span><span>└─  .engine
+</span><span>    └─  ...
+</span></code></pre><p>Whilst this may seem large (especially if you look inside of the <code>.engine</code>) directory, it is all fairly manageable.<h2 id=samurai-json>samurai.json</h2><p>The primary configuration file for your project is the <code>samurai.json</code> file. This is where you will put information about your browser so Samurai can build it correctly. It should look something like this:<pre class=language-json data-lang=json style=color:#c0c5ce;background-color:#2b303b><code class=language-json data-lang=json><span>{
+</span><span>  "</span><span style=color:#a3be8c>name</span><span>": "</span><span style=color:#a3be8c>Samurai Example Browser</span><span>",
+</span><span>  "</span><span style=color:#a3be8c>vendor</span><span>": "</span><span style=color:#a3be8c>Fushra</span><span>",
+</span><span>  "</span><span style=color:#a3be8c>appId</span><span>": "</span><span style=color:#a3be8c>dev.samurai.example</span><span>",
+</span><span>  "</span><span style=color:#a3be8c>binaryName</span><span>": "</span><span style=color:#a3be8c>samurai-example-browser</span><span>",
+</span><span>
+</span><span>  "</span><span style=color:#a3be8c>version</span><span>": {
+</span><span>    "</span><span style=color:#a3be8c>product</span><span>": "</span><span style=color:#a3be8c>firefox</span><span>",
+</span><span>    "</span><span style=color:#a3be8c>version</span><span>": "</span><span style=color:#a3be8c>102.0.1</span><span>"
+</span><span>  },
+</span><span>
+</span><span>  "</span><span style=color:#a3be8c>buildOptions</span><span>": {
+</span><span>    "</span><span style=color:#a3be8c>windowsUseSymbolicLinks</span><span>": </span><span style=color:#d08770>false
+</span><span>  }
+</span><span>}
+</span></code></pre><p>Up the top of the config file, we have general information about the browser you are building. This includes its name, the vendor creating it, its appId, and the name of the binary that will be output.<p>The <code>version</code> key is used to specify information about the product you are building. <code>product</code> is the Firefox branch you are building against. <code>version</code> is the version of Firefox you are building against, which will vary with the branch. Here <code>firefox</code> refers to the stable branch of Firefox.<p><code>buildOptions</code> provides a number of internal toggles for how Samurai builds your project.<h2 id=configs>Configs</h2><p>The configs folder stores a combination of config files that are required by Firefox and assets required by Samurai. By default there are only <a href=https://firefox-source-docs.mozilla.org/build/buildsystem/mozconfigs.html><code>mozconfig</code> files</a>, Samurai should generate most parts of this config for you. The only part that you will need to change is the source control repo:<pre class=language-bash data-lang=bash style=color:#c0c5ce;background-color:#2b303b><code class=language-bash data-lang=bash><span style=color:#bf616a>ac_add_options --with-app-name</span><span>=${</span><span style=color:#bf616a>binName</span><span>}
+</span><span style=color:#b48ead>export </span><span style=color:#bf616a>MOZ_USER_DIR</span><span>="$</span><span style=color:#a3be8c>{</span><span style=color:#bf616a>name</span><span style=color:#a3be8c>}</span><span>"
+</span><span style=color:#b48ead>export </span><span style=color:#bf616a>MOZ_APP_VENDOR</span><span>="$</span><span style=color:#a3be8c>{</span><span style=color:#bf616a>vendor</span><span style=color:#a3be8c>}</span><span>"
+</span><span style=color:#b48ead>export </span><span style=color:#bf616a>MOZ_APP_BASENAME</span><span>=$</span><span style=color:#a3be8c>{</span><span style=color:#bf616a>binName</span><span style=color:#a3be8c>}
+</span><span style=color:#b48ead>export </span><span style=color:#bf616a>MOZ_APP_PROFILE</span><span>=$</span><span style=color:#a3be8c>{</span><span style=color:#bf616a>binName</span><span style=color:#a3be8c>}
+</span><span style=color:#b48ead>export </span><span style=color:#bf616a>MOZ_APP_DISPLAYNAME</span><span>="$</span><span style=color:#a3be8c>{</span><span style=color:#bf616a>name</span><span style=color:#a3be8c>}</span><span>"
+</span><span style=color:#b48ead>export </span><span style=color:#bf616a>MOZ_MACBUNDLE_ID</span><span>=$</span><span style=color:#a3be8c>{</span><span style=color:#bf616a>appId</span><span style=color:#a3be8c>}
+</span><span style=color:#b48ead>export </span><span style=color:#bf616a>MOZ_DISTRIBUTION_ID</span><span>=$</span><span style=color:#a3be8c>{</span><span style=color:#bf616a>appId</span><span style=color:#a3be8c>}
+</span><span>
+</span><span style=color:#65737e># Uncomment if builds are too resource hungry
+</span><span style=color:#65737e># mk_add_options MOZ_MAKE_FLAGS="-j4"
+</span><span style=color:#65737e># ac_add_options --enable-linker=gold
+</span><span>
+</span><span style=color:#65737e># Misc
+</span><span style=color:#b48ead>export </span><span style=color:#bf616a>MOZ_STUB_INSTALLER</span><span>=</span><span style=color:#a3be8c>1
+</span><span style=color:#b48ead>export </span><span style=color:#bf616a>MOZ_INCLUDE_SOURCE_INFO</span><span>=</span><span style=color:#a3be8c>1
+</span><span style=color:#b48ead>export </span><span style=color:#bf616a>MOZ_SOURCE_REPO</span><span>=</span><span style=color:#a3be8c>https://github.com/PraxiveSoftware/browser-desktop </span><span style=color:#65737e># &LT-- Change this!
+</span><span style=color:#b48ead>export </span><span style=color:#bf616a>MOZ_SOURCE_CHANGESET</span><span>=$</span><span style=color:#a3be8c>{</span><span style=color:#bf616a>changeset</span><span style=color:#a3be8c>}
+</span></code></pre><p>This directory is also where you would put <a href=/guides/branding>branding assets for your browser</a><h2 id=src>src/</h2><p>The source folder contains all of the modifications that you have made to Firefox. These come in two types, inserted files (and folders) and patches. Both of these are applied using the <code>samurai import</code> command.<p>Inserted files are just files (and folders) that you have inserted into the Firefox source code. These will overwrite existing files if they already exist. On Linux and MacOS, these are symlinked so when you change a file in <code>src/</code>, the change will be mirrored in Firefox's source code instantly. On Windows, you will need to run <code>samurai import</code> for these changes to apply.<p>Patches are changes to Firefox's files. As a rule of thumb, you should prefer splitting new content into a new file rather than using patches, but there are times when you must modify Firefox's source code. Each of these patch files are just git patch files:<pre class=language-patch data-lang=patch style=color:#c0c5ce;background-color:#2b303b><code class=language-patch data-lang=patch><span>diff --git a/browser/themes/linux/jar.mn b/browser/themes/linux/jar.mn
+</span><span>index 404a88b218c652afac0cb2004676d22da53d48f3..5a4668ef2970dd773536907f51f3e7e7e3e023cb 100644
+</span><span>--- a/browser/themes/linux/jar.mn
+</span><span>+++ b/browser/themes/linux/jar.mn
+</span><span>@@ -6,7 +6,7 @@ </span><span style=color:#8fa1b3>browser.jar:
+</span><span> % skin browser classic/1.0 %skin/classic/browser/
+</span><span> #include ../shared/jar.inc.mn
+</span><span>   skin/classic/browser/sanitizeDialog.css
+</span><span style=color:#bf616a>-  skin/classic/browser/browser.css
+</span><span style=color:#a3be8c>+* skin/classic/browser/browser.css
+</span><span>   skin/classic/browser/contextmenu.css                (../shared/contextmenu.css)
+</span><span>   skin/classic/browser/monitor-base.png
+</span><span>   skin/classic/browser/monitor-border.png
+</span></code></pre><p>In this patch, you can see that I am adding a <code>*</code> to the start of a line. You generate these patches by modifying the file in the <code>.engine/</code> directory and running <code>samurai export</code> to export your changes to the src directory. Be careful, if you do not export your changes, they will not be saved and will not work on other developers' computers or yours after an update!<pre class=language-sh data-lang=sh style=color:#c0c5ce;background-color:#2b303b><code class=language-sh data-lang=sh><span style=color:#bf616a>samurai</span><span> export browser/themes/linux/jar.mn
+</span></code></pre><h2 id=engine>.engine/</h2><p>The .engine directory contains all of Firefox's source code. It is massive - around 15GB in size (around 11GB of that are build assets from when you run <code>samurai build</code>). I am not able to provide a full explanation of the contents of the directory.<p>However, most of the changes you will want to make will be in <code>.engine/browser/</code>, which contains the source code for the browser's UI. Here are some of the important directories inside of the <code>.engine/browser/</code> directory:<ul><li><a href=https://searchfox.org/mozilla-central/source/browser/base/content><code>.engine/browser/base/content</code></a>: These contain the xhtml files that make up a majority of the browser's ui<li><a href=https://searchfox.org/mozilla-central/source/browser/components><code>.engine/browser/components</code></a>: This contains some self-contained UI features, like screenshots, uitours, downloads, etc.<li><a href=https://searchfox.org/mozilla-central/source/browser/themes><code>.engine/browser/themes</code></a>: Here lies most of the browsers CSS. See <a href=/getting-started/userchrome>Customizing Your Browser's UI</a> for more information.</ul><p>One of the best ways to find what you are looking for and get to know the code base is by searching it. However, if you try and search through it on your computer you are in for a world of pain. Instead, I recommend you use <a href=https://searchfox.org>SearchFox</a>, which is significantly faster.</div></article></main><script defer src=https://praxivesoftware.github.io/Samurai/elasticlunr.min.js></script><script defer src=https://praxivesoftware.github.io/Samurai/search_index.en.js></script><script defer src=https://praxivesoftware.github.io/Samurai/js.js></script>
