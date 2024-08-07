@@ -27,11 +27,11 @@ importers:
         specifier: ^10.0.0
         version: 10.1.0
       ini:
-        specifier: ^3.0.0
-        version: 3.0.1
+        specifier: ^4.1.3
+        version: 4.1.3
       is-apple-silicon:
-        specifier: trickypr/is-apple-silicon
-        version: git+https://git@github.com:trickypr/is-apple-silicon.git#5f75501a1d7566ba9f94174b6825d7bd9d302b6a
+        specifier: ^1.0.1
+        version: 1.0.1
       kleur:
         specifier: ^4.1.5
         version: 4.1.5
@@ -73,8 +73,8 @@ importers:
         specifier: ^9.0.13
         version: 9.0.13
       '@types/ini':
-        specifier: ^1.3.31
-        version: 1.3.34
+        specifier: ^4.1.1
+        version: 4.1.1
       '@types/jest':
         specifier: ^27.0.3
         version: 27.5.2
@@ -836,8 +836,8 @@ packages:
   '@types/graceful-fs@4.1.9':
     resolution: {integrity: sha512-olP3sd1qOEe5dXTSaFvQG+02VdRXcdytWLAZsAq1PecU8uqQAhkrnbli7DagjtXKW/Bl7YJbUsa8MPcuc8LHEQ==}
 
-  '@types/ini@1.3.34':
-    resolution: {integrity: sha512-FafeLhwmWucTi31ZYg/6aHBZNyrogQ35aDvSW7zMAz3HMhUqQ4G/NBya8c5pe2jwoYsDFwra8O9/yZotong76g==}
+  '@types/ini@4.1.1':
+    resolution: {integrity: sha512-MIyNUZipBTbyUNnhvuXJTY7B6qNI78meck9Jbv3wk0OgNwRyOOVEKDutAkOs1snB/tx0FafyR6/SN4Ps0hZPeg==}
 
   '@types/istanbul-lib-coverage@2.0.6':
     resolution: {integrity: sha512-2QF/t/auWm0lsy8XtKVPG19v3sSOQlJe/YHZgfjb/KBBHOGSV+J2q/S671rcq9uTBrLAXmZpqJiaQbMT+zNU1w==}
@@ -1633,13 +1633,12 @@ packages:
   inherits@2.0.4:
     resolution: {integrity: sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==}
 
-  ini@3.0.1:
-    resolution: {integrity: sha512-it4HyVAUTKBc6m8e1iXWvXSTdndF7HbdN713+kvLrymxTaU4AUBWrJ4vEooP+V7fexnVD3LKcBshjGGPefSMUQ==}
-    engines: {node: ^12.13.0 || ^14.15.0 || >=16.0.0}
+  ini@4.1.3:
+    resolution: {integrity: sha512-X7rqawQBvfdjS10YU1y1YVreA3SsLrW9dX2CewP2EbBJM4ypVNLDkO5y04gejPwKIY9lR+7r9gn3rFPt/kmWFg==}
+    engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
 
-  is-apple-silicon@git+https://git@github.com:trickypr/is-apple-silicon.git#5f75501a1d7566ba9f94174b6825d7bd9d302b6a:
-    resolution: {commit: 5f75501a1d7566ba9f94174b6825d7bd9d302b6a, repo: git@github.com:trickypr/is-apple-silicon.git, type: git}
-    version: 1.0.1
+  is-apple-silicon@1.0.1:
+    resolution: {integrity: sha512-vAlkYR/DUe1F9/L00RcZC4z51O3aem2PwRUtSYfC9Ay2kXiE7mloqSgeliv65gUp9wLRpYZWWHP8RbbvkZA6wg==}
 
   is-arrayish@0.2.1:
     resolution: {integrity: sha512-zz06S8t0ozoDXMG+ube26zeCTNXcKIPJZJi8hBrF4idCLms4CG9QtK7qBl1boi5ODzFpjswb5JPmHCbMpjaYzg==}
@@ -3627,7 +3626,7 @@ snapshots:
     dependencies:
       '@types/node': 20.14.11
 
-  '@types/ini@1.3.34': {}
+  '@types/ini@4.1.1': {}
 
   '@types/istanbul-lib-coverage@2.0.6': {}
 
@@ -4485,9 +4484,9 @@ snapshots:
 
   inherits@2.0.4: {}
 
-  ini@3.0.1: {}
+  ini@4.1.3: {}
 
-  is-apple-silicon@git+https://git@github.com:trickypr/is-apple-silicon.git#5f75501a1d7566ba9f94174b6825d7bd9d302b6a: {}
+  is-apple-silicon@1.0.1: {}
 
   is-arrayish@0.2.1: {}
 
